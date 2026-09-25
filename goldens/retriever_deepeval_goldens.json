@@ -1,0 +1,92 @@
+[
+  {
+    "id": "g001",
+    "query": "Define experiment tracking in regression testing, including dashboard use and CI tool integration.",
+    "ideal_answer": "Experiment tracking in regression testing involves recording and comparing metrics from multiple test runs to monitor performance changes over time. A dashboard is used to visually compare these metrics across runs, helping identify improvements or regressions. Integrating a CI (Continuous Integration) tool automates this process, enabling regular, automated testing and tracking for more efficient and advanced regression testing.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g002",
+    "query": "What does persistent inter-grader score variability indicate about rubric clarity and criteria ambiguity?",
+    "ideal_answer": "Persistent inter-grader score variability indicates that the rubric lacks clarity and contains ambiguous criteria, causing graders to interpret and apply the instructions differently.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g003",
+    "query": "If a new benchmark omitted human baseline data, how would model performance comparisons be affected?",
+    "ideal_answer": "If a new benchmark omits human baseline data, it becomes difficult to assess how close model performance is to human-level ability, making performance comparisons less meaningful and less grounded.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g004",
+    "query": "If LLM Wales and LLM ops finish simultaneously, who would likely lead AI system design teaching?",
+    "ideal_answer": "If LLM Wales and LLM ops finish simultaneously, the teaching lead for AI system design would depend on who has more practical experience with system design implementation, likely favoring the one with a stronger background in LLM ops, as they have hands-on experience with operations that complement system design.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g005",
+    "query": "If Kaggle data were as messy as real-world data, how would model reliability and leaderboard scores be affected?",
+    "ideal_answer": "If Kaggle data were as messy as real-world data, model reliability would likely decrease due to challenges like ambiguous requests, missing information, and unusual edge cases. Consequently, leaderboard scores would be less inflated and more reflective of true performance, reducing the risk of contamination or memorization seen with clean benchmark data.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g006",
+    "query": "How do UI, prompts, APIs, orchestration, guardrails, memory, and retrieval systems integrate in LLM apps?",
+    "ideal_answer": "In LLM applications, the user interface enables interaction, while prompts (including system prompts) guide the model's responses. APIs and tools extend functionality, and orchestration code manages control flow and parallel processes. Guardrails ensure safe and reliable outputs. Memory and context maintain continuity, and retrieval systems support RAG setups by fetching relevant information, all working together to create a cohesive, effective application.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g007",
+    "query": "What are the distinctions between offline gating evaluation and large-scale online drift detection for chatbots?",
+    "ideal_answer": "Offline gating evaluation is fast, cheap, and repeatable, using small datasets to decide if a model passes a threshold for deployment via CI. In contrast, large-scale online drift detection monitors real-world chatbot performance across many users (e.g., 50,000 daily conversations), which is costly and requires sampling techniques rather than evaluating every interaction.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g008",
+    "query": "Identify primary risk vectors affecting accuracy, relevance, completeness, and instruction adherence in LLM summarizers.",
+    "ideal_answer": "The primary risk vectors affecting accuracy, relevance, completeness, and instruction adherence in LLM summarizers include: correctness and accuracy of generated content, ensuring the response is relevant to the input query, completeness in addressing all asked questions, and strict adherence to specified instructions such as format or length.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g009",
+    "query": "How does random sampling of 1,000 from 50,000 conversations reduce LLM evaluation costs?",
+    "ideal_answer": "Random sampling of 1,000 conversations from 50,000 reduces LLM evaluation costs by limiting the number of evaluations the costly LLM judge must perform. Instead of evaluating all 50,000 conversations, only a representative subset is assessed, significantly lowering computation and expense while still providing a reliable hallucination rate for monitoring.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g010",
+    "query": "Between GROK and Sonnet, which model’s API stability and company reliability justify prioritization?",
+    "ideal_answer": "Sonnet’s API stability and company reliability justify prioritization over GROK, as Sonnet is considered more stable and the company more dependable despite GROK being faster in some cases.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g011",
+    "query": "How does stratified sampling combined with clustering and evaluators enhance hallucination detection and alerting?",
+    "ideal_answer": "Stratified sampling ensures more samples are taken from categories prone to hallucination rather than normal ones, increasing the chance of detecting issues. Clustering helps group similar conversations, enabling a small model to identify negative feedback (e.g., thumbs down) or problematic patterns. Evaluators then assess these sampled conversations, generate metrics, and aggregate them over time. When metrics cross a threshold, the alerting system is triggered, enabling effective and timely hallucination detection and response.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g012",
+    "query": "How do weekly score distributions shift from bimodal (500,700) to unimodal peak near 800?",
+    "ideal_answer": "The weekly score distributions shift as the majority of children's marks move from clustering around 500 and 700 in week 1 to concentrating near 800 in week 2, indicating an overall improvement in scores and a change from a bimodal to a unimodal distribution.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g013",
+    "query": "If schema.sql was corrupted, how would loading, querying, and Evaluate.py’s accuracy be affected?",
+    "ideal_answer": "If schema.sql is corrupted, loading the schema will fail or be incorrect, causing the system prompt and golden dataset setup to break. Consequently, generated SQL queries may not run properly on the database, leading to errors or invalid results. This will directly impact Evaluate.py’s accuracy, as it relies on correct query execution and results to determine correctness, resulting in unreliable or failed evaluations.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g014",
+    "query": "How do global user votes across chat, code, image, and video categories integrate to rank AI models like Claude Opus 4.8 and Fable?",
+    "ideal_answer": "Global user votes across chat, code, image, and video categories are collected at scale from people worldwide to create leaderboards ranking AI models like Claude Opus 4.8 and Fable. These votes reflect user preferences in different tasks, allowing models to be compared in specific categories. Although some human bias exists, the large volume of votes makes the rankings reliable, showing models like Fable leading with scores such as 5.6 in certain categories over Claude Opus 4.8.",
+    "source": "TODO-verify"
+  },
+  {
+    "id": "g015",
+    "query": "How did truthfulness scores of GPT-3, aligned models (RLHF), and 2024 frontier models compare and evolve?",
+    "ideal_answer": "GPT-3 achieved 58% truthfulness, much lower than the 94% human baseline. With the introduction of alignment techniques like RLHF and instruction tuning in 2022-23, models gradually improved. However, from 2023 onwards, larger models initially showed decreased truthfulness, causing the benchmark to saturate by 2024. In 2024, frontier models' truthfulness scores began rising again, indicating renewed progress.",
+    "source": "TODO-verify"
+  }
+]
