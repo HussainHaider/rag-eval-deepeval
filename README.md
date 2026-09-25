@@ -14,7 +14,7 @@ faithfulness, scope control, prompt/data leakage, and toxicity.
 | `data/*.vtt` | Source material: 8 WebVTT transcripts of the LLM Evals sessions. |
 | `src/retriever.py` | Loads + cleans the VTTs, chunks them, embeds them into a persisted Chroma store, and exposes a retriever. |
 | `goldens/` | The evaluation datasets (JSON) plus `generate_goldens.py`, which synthesizes draft goldens from the transcripts. |
-| `evals/` | Where the DeepEval test suites live (currently empty — this is the next piece of work). |
+| `evals/` | The DeepEval suites, plus `harness.py` (shared judge config + per-metric summarizer). |
 | `resources/deepeval_intro.py` | A minimal standalone DeepEval example: two test cases scored with `AnswerRelevancyMetric`. |
 | `export_chroma_chunks.py` | Dumps every chunk in the Chroma store to `chunks_dump.json` so you can scan them by hand. |
 | `main.py` | Placeholder entry point. |
@@ -92,14 +92,41 @@ uv run python goldens/generate_goldens.py
 uv run python main.py
 ```
 
-Eval suites go in `evals/` and are run with `pytest` (already a dependency):
+## Run the evals
+
+Always launch them as **modules from the project root**. Running `python evals/eval_retriever.py`
+directly fails with `ModuleNotFoundError: No module named 'src'`, because Python puts the script's
+own directory on `sys.path` instead of the project root:
 
 ```bash
-uv run pytest evals/
+# base retriever: similarity search, k=5
+uv run python -m evals.eval_retriever
+
+# same eval, with cross-encoder reranking: fetch 10, rerank down to 5
+uv run python -m evals.eval_retriever_with_reranker
 ```
 
-`evals/` is empty right now, so that command collects nothing and pytest exits with code 5
-("no tests ran") until you add test files.
+Both score `ContextualRecallMetric` and `ContextualPrecisionMetric` over
+`goldens/retriever_goldens.json`, then print a per-metric summary (pass rate, avg/min/max score)
+under DeepEval's own report.
+
+### Why the two are comparable
+
+`eval_retriever.run(retriever, label, top_k)` is the whole evaluation, with the retriever injected.
+`eval_retriever_with_reranker.py` just calls it with a different retriever, so the golden set,
+metrics, judge model and threshold are identical on both sides by construction — a score delta can
+only come from the retrieval change.
+
+Two rules hold that together, and both matter more than they look:
+
+- **The judge is pinned once**, in `evals/harness.py` (`JUDGE_MODEL`, `THRESHOLD`). Changing the
+  judge and the retriever in the same comparison makes the result unattributable.
+- **The reported hyperparameters are imported, never retyped.** Embedding model, chunk size and
+  `top_k` come from `src/retriever.py`; `fetch_k` and the cross-encoder come off the live
+  `RerankingRetriever`. A run cannot be tagged with a config it did not use.
+
+Each file is import-safe — the work sits behind `run_local()` and an `if __name__ == "__main__"`
+guard, so importing one (or letting pytest collect the directory) never fires a paid eval run.
 
 ## Using the retriever in your own code
 

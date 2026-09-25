@@ -220,3 +220,4 @@ __marimo__/
 # Project: generated artifacts
 chroma_store/
 chunks_dump.json
+.deepeval/
